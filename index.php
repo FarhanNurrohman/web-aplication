@@ -2,7 +2,6 @@
 require 'functions.php';
 
 
-
 ?>
 
 <html lang="en">
@@ -15,7 +14,7 @@ require 'functions.php';
     <a href="">logout</a>
 
     <h1>Admin Page</h1>
-    <a href="">Tambah User</a>
+    <a href="tambah.php">Tambah User</a>
     <br>
 
     <a href="tambah.php">Tambah siswa</a>
@@ -40,7 +39,10 @@ require 'functions.php';
                 <td><img src="img/<?= "waaw" ?>" alt=""></td>
                 <td></td>
                 <td></td>
-                <td><a href=""></a></td>
+                <td></td>
+                <td>
+                    <a href="">Daftar Nilai</a>
+                </td>
 
             </tr>
         </table>

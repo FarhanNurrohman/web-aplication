@@ -1,5 +1,5 @@
 <?php
-require "funsctions.php";
+require 'functions.php';
 
 // mengecek apakah button sumbit telah di pencet
 if(isset($_POST['submit'])){
@@ -7,7 +7,8 @@ if(isset($_POST['submit'])){
     $nis = $_POST['nis'];
     $gambar = $_POST['gambar'];
     $no_tlp = $_POST['no_tlp'];
-    tambah($nis, $nama, $no_tlp, $gambar);
+
+    echo tambah($nis, $nama, $no_tlp, $gambar);
 
 }
 
@@ -25,9 +26,44 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <form action="" method="post">
-        <table>
+        <table cellspacing="0">
             <tr>
-                <td></td>
+                <th>
+                    <h1>Tambah Data Siswa</h1>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <label for="gambar">Foto :</label>
+                    <br>
+                    <input type="text" id="gambar" name="gambar">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="nis">NIS :</label>
+                    <br>
+                    <input type="text" id="nis" name="nis">
+                </td>
+            </tr>
+            <tr>    
+                <td>
+                    <label for="nama">Nama :</label>
+                    <br>
+                    <input type="text" id="nama" name="nama">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="no_tlp">Nomer Telepone :</label>
+                    <br>
+                    <input type="text" id="no_tlp" name="no_tlp">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" name="submit" id="submit">Kirim!!</button>
+                </td>
             </tr>
         </table>
     </form>
