@@ -5,13 +5,13 @@ require 'functions.php';
 if(isset($_POST['submit'])){
     $nama = $_POST['nama'];
     $nis = $_POST['nis'];
-    $gambar = $_POST['gambar'];
     $no_tlp = $_POST['no_tlp'];
 
+    var_dump($_FILES);
+    die;
     echo tambah($nis, $nama, $no_tlp, $gambar);
 
 }
-
 
 
 
@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
     <title>Tambah Data Siswa</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <table cellspacing="0">
             <tr>
                 <th>
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
                 <td>
                     <label for="gambar">Foto :</label>
                     <br>
-                    <input type="text" id="gambar" name="gambar">
+                    <input type="file" id="gambar" name="gambar">
                 </td>
             </tr>
             <tr>
