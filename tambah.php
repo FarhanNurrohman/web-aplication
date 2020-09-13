@@ -3,13 +3,18 @@ require 'functions.php';
 
 // mengecek apakah button sumbit telah di pencet
 if(isset($_POST['submit'])){
-    $nama = $_POST['nama'];
-    $nis = $_POST['nis'];
-    $no_tlp = $_POST['no_tlp'];
+    
+    $respons = tambah($nis, $nama, $no_tlp, $gambar);
 
-    var_dump($_FILES);
-    die;
-    echo tambah($nis, $nama, $no_tlp, $gambar);
+    if($respons < 0){
+        echo "<script>
+            alert('data gagal ditambahkan');
+        <script>";
+    }else{
+        echo "<script>
+            alert('data berhasil ditambahkan');
+        <script>";
+    }
 
 }
 
