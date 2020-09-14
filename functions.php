@@ -11,7 +11,7 @@ function query($query){
         $rows[] = $row;
     }
 
-    return $rows[0];
+    return $rows;
 }
 
 
@@ -23,6 +23,7 @@ function tambah($data){
     $no_tlp = htmlspecialchars($data['no_tlp']);
 
     $gambar = upload();
+    // memberikan pesan jika gambar belum di inputkan
     if($gambar <= 0){
         echo "<script>
             alert('Tidak ada gambar');

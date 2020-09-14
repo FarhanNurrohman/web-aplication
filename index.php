@@ -2,7 +2,6 @@
 require 'functions.php';
 
 $data = query("SELECT * FROM data_siswa");
-var_dump($data);
 
 ?>
 
@@ -16,10 +15,10 @@ var_dump($data);
     <a href="">logout</a>
 
     <h1>Admin Page</h1>
-    <a href="tambah.php">Tambah User</a>
+    <a href="">Add new user</a>
     <br>
 
-    <a href="tambah.php">Tambah siswa</a>
+    <a href="tambah.php">Add new student</a>
     <form action="" method="post">
         <table border="1" cellspacing="0">
             <tr>
@@ -29,24 +28,23 @@ var_dump($data);
                 <th>Nama</th>
                 <th>NIS</th>
                 <th>NoTlp</th>
-                <th>Nilai siswa</th>
+                <th>email</th>
             </tr>
+            <?php $i = 1; foreach($data as $siswa): ?>
             <tr>
-                <td><?= 1 ."." ?></td>
+                <td><?= $i++; ?></td>
                 <td>
-                    <a href="">Delete</a>
-                    |
-                    <a href="">Update</a>
+                    <a href="">Delete</a> | <a href="">Update</a>
                 </td>
-                <td><img src="img/<?= "waaw" ?>" alt=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
                 <td>
-                    <a href="">Daftar Nilai</a>
+                    <img src="img/<?= $siswa['gambar'] ?>" alt="">
                 </td>
-
+                <td><?= $siswa['nama'] ?></td>
+                <td><?= $siswa['nis'] ?></td>
+                <td><?= $siswa['no_tlp'] ?></td>
+                <td><?= $siswa['email'] ?></td>
             </tr>
+                <?php endforeach; ?>
         </table>
     </form>
 </body>
