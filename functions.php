@@ -18,21 +18,32 @@ function query($query){
 function tambah($data){
     global $db;
 
-    $nama = $data['nama'];
-    $nis = $data['nis'];
-    $no_tlp = $data['no_tlp'];
+    $nama = htmlspecialchars($data['nama']);
+    $nis = htmlspecialchars($data['nis']);
+    $no_tlp = htmlspecialchars($data['no_tlp']);
 
-    $gambar = upload($_FILES);
+    $gambar = upload();
+    if($gambar <= 0){
+        echo "<script>
+            alert('Tidak ada gambar');
+        </script>";
+        return false;
+    }
 
-    $query = "INSERT INTO data_siswa(nis, nama, no_tlp, gambar, id_nilai) 
-    VALUES ('$nis', '$nama', '$notlp', '$gambar', $id_nilai)";
+    $query = "INSERT INTO data_siswa() 
+    VALUES ()";
 
     mysqli_query($db,$query);
     
     return mysqli_affected_rows($db);
 }
 
-// function upload($gambar){
-//     if()
-// }
+function upload(){
+    $error = $_FILES['gambar']['error'];
+    $nama = $_FILES['gambar']['name'];
+
+    if($error === 4){
+        return false;
+    }
+}
 ?>

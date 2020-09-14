@@ -9,11 +9,11 @@ if(isset($_POST['submit'])){
     if($respons < 0){
         echo "<script>
             alert('data gagal ditambahkan');
-        <script>";
+        </script>";
     }else{
         echo "<script>
             alert('data berhasil ditambahkan');
-        <script>";
+        </script>";
     }
 
 }

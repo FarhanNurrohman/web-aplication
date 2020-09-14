@@ -3,7 +3,6 @@ require 'functions.php';
 
 $data = query("SELECT * FROM data_siswa");
 var_dump($data);
-die;
 
 ?>
 
