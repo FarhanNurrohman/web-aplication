@@ -1,7 +1,8 @@
 <?php
 require 'functions.php';
 
-$data = query("SELECT * FROM data_siswa");
+$data = query("SELECT * FROM data_siswa ORDER BY nis ASC");
+
 
 ?>
 
@@ -14,7 +15,7 @@ $data = query("SELECT * FROM data_siswa");
 <body>
     <a href="">logout</a>
 
-    <h1>Admin Page</h1>
+    <h1>Data kelas</h1>
     <a href="">Add new user</a>
     <br>
 
@@ -34,7 +35,7 @@ $data = query("SELECT * FROM data_siswa");
             <tr>
                 <td><?= $i++; ?></td>
                 <td>
-                    <a href="">Delete</a> | <a href="">Update</a>
+                    <a href="">Update</a> | <a href="">Delete</a>
                 </td>
                 <td>
                     <img src="img/<?= $siswa['gambar'] ?>" alt="">

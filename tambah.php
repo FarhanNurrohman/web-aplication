@@ -1,12 +1,13 @@
 <?php
 require 'functions.php';
 
+
 // mengecek apakah button sumbit telah di pencet
 if(isset($_POST['submit'])){
     
     $respons = tambah($nis, $nama, $no_tlp, $gambar);
 
-    if($respons < 0){
+    if($respons < 1){
         echo "<script>
             alert('data gagal ditambahkan');
         </script>";
@@ -39,35 +40,42 @@ if(isset($_POST['submit'])){
             </tr>
             <tr>
                 <td>
-                    <label for="gambar">Foto :</label>
+                    <label for="gambar">Picture :</label>
                     <br>
                     <input type="file" id="gambar" name="gambar">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="nis">NIS :</label>
+                    <label for="nis">Stuednt ID :</label>
                     <br>
                     <input type="text" id="nis" name="nis">
                 </td>
             </tr>
             <tr>    
                 <td>
-                    <label for="nama">Nama :</label>
+                    <label for="nama">Name :</label>
                     <br>
                     <input type="text" id="nama" name="nama">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="no_tlp">Nomer Telepone :</label>
+                    <label for="no_tlp">Phone Number :</label>
                     <br>
                     <input type="text" id="no_tlp" name="no_tlp">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button type="submit" name="submit" id="submit">Kirim!!</button>
+                    <label for="email">Email :</label>
+                    <br>
+                    <input type="email" id="email" name="email">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" name="submit" id="submit">Send!!</button>
                 </td>
             </tr>
         </table>
