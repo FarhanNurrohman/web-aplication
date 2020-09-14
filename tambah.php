@@ -4,9 +4,12 @@ require 'functions.php';
 
 // mengecek apakah button sumbit telah di pencet
 if(isset($_POST['submit'])){
+    var_dump($_POST);
+    die;
     
     $respons = tambah($nis, $nama, $no_tlp, $gambar);
 
+    // cek apakah data berhasil diinputkan
     if($respons < 1){
         echo "<script>
             alert('data gagal ditambahkan');
@@ -31,7 +34,7 @@ if(isset($_POST['submit'])){
     <title>Tambah Data Siswa</title>
 </head>
 <body>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
         <table cellspacing="0">
             <tr>
                 <th>
@@ -49,28 +52,29 @@ if(isset($_POST['submit'])){
                 <td>
                     <label for="nis">Stuednt ID :</label>
                     <br>
-                    <input type="text" id="nis" name="nis">
+                    <input type="text" id="nis" name="nis" required maxlength="6">
                 </td>
             </tr>
             <tr>    
                 <td>
                     <label for="nama">Name :</label>
                     <br>
-                    <input type="text" id="nama" name="nama">
+                    <input type="text" id="nama" name="nama" required>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="no_tlp">Phone Number :</label>
                     <br>
-                    <input type="text" id="no_tlp" name="no_tlp">
+                    <label>+62</label>
+                    <input type="input" id="no_tlp" name="no_tlp" required maxlength="12" >
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="email">Email :</label>
                     <br>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" required>
                 </td>
             </tr>
             <tr>

@@ -18,8 +18,8 @@ $data = query("SELECT * FROM data_siswa ORDER BY nis ASC");
     <h1>Data kelas</h1>
     <a href="">Add new user</a>
     <br>
-
     <a href="tambah.php">Add new student</a>
+    
     <form action="" method="post">
         <table border="1" cellspacing="0">
             <tr>

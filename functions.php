@@ -30,8 +30,8 @@ function tambah($data){
     }
 
     // membuat query input
-    $query = "INSERT INTO data_siswa() 
-    VALUES ()";
+    $query = "INSERT INTO data_siswa(nis, gambar, nama, no_tlp, email) 
+    VALUES ($nis, '$gambar', '$nama', '$no_tlp', '$email')";
 
     mysqli_query($db,$query);
     
