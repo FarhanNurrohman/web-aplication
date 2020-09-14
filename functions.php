@@ -21,7 +21,14 @@ function tambah($data){
     $nama = htmlspecialchars($data['nama']);
     $nis = htmlspecialchars($data['nis']);
     $no_tlp = htmlspecialchars($data['no_tlp']);
-    $email = htmlspecialchars($data['email']);
+
+    $email = cekEmail($data['email']);
+    if($email){
+        echo "<script>
+            alert('Email tidak vailid!!')
+        </script>";
+        return false;
+    }
 
     $gambar = upload();
     // memberikan pesan jika gambar belum di inputkan
@@ -83,5 +90,9 @@ function upload(){
     move_uploaded_file($dirGambar, $dirGambarBaru);
 
     return $namaGambarBaru;
+}
+
+function cekEmail($email){
+    return (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $email)) ? true : false;
 }
 ?>

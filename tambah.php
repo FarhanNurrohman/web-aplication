@@ -4,7 +4,6 @@ require 'functions.php';
 
 // mengecek apakah button sumbit telah di pencet
 if(isset($_POST['submit'])){
-    var_dump($_POST);
     die;
     
     $respons = tambah($nis, $nama, $no_tlp, $gambar);
@@ -17,7 +16,9 @@ if(isset($_POST['submit'])){
     }else{
         echo "<script>
             alert('data berhasil ditambahkan');
-        </script>";
+        </script>
+        document.location.href = 'index.php';
+        ";
     }
 
 }
@@ -67,14 +68,14 @@ if(isset($_POST['submit'])){
                     <label for="no_tlp">Phone Number :</label>
                     <br>
                     <label>+62</label>
-                    <input type="input" id="no_tlp" name="no_tlp" required maxlength="12" >
+                    <input type="text" id="no_tlp" name="no_tlp" required maxlength="12" >
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="email">Email :</label>
                     <br>
-                    <input type="email" id="email" name="email" required>
+                    <input type="text" id="email" name="email" required>
                 </td>
             </tr>
             <tr>
