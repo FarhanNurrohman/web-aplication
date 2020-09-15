@@ -34,10 +34,10 @@ $data = query("SELECT * FROM siswa ORDER BY nis ASC");
             <tr>
                 <td><?= $i++; ?></td>
                 <td>
-                    <a href="">Update</a> | <a href="">Delete</a>
+                    <a href="">Update</a> | <a href="hapus.php?id=<?=$siswa['id']?>" onclick="return confirm('Apakah anda yakin?');">Delete</a>
                 </td>
                 <td>
-                    <img src="img/<?= $siswa['gambar'] ?>" alt="">
+                    <img src="img/<?= $siswa['gambar'] ?>" alt="" width="75">
                 </td>
                 <td><?= $siswa['nama'] ?></td>
                 <td><?= $siswa['nis'] ?></td>

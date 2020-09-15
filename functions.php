@@ -107,4 +107,14 @@ function cekAngka($angka){
         return true;
     }
 }
+
+function hapus($id){
+    global $db;
+    $query = "DELETE FROM siswa WHERE id = $id";
+
+    //melakukan query hapus
+    mysqli_query($db, $query);
+
+    return mysqli_affected_rows($db);
+}
 ?>
