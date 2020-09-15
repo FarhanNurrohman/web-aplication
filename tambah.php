@@ -4,27 +4,25 @@ require 'functions.php';
 
 // mengecek apakah button sumbit telah di pencet
 if(isset($_POST['submit'])){
-    die;
-    
-    $respons = tambah($nis, $nama, $no_tlp, $gambar);
+
+    $respon = tambah($_POST);
+    echo mysqli_affected_rows($db);
 
     // cek apakah data berhasil diinputkan
-    if($respons < 1){
+    if($respon < 1){
         echo "<script>
             alert('data gagal ditambahkan');
+            document.location.href = 'index.php';
         </script>";
     }else{
         echo "<script>
             alert('data berhasil ditambahkan');
+            document.location.href = 'index.php';
         </script>
-        document.location.href = 'index.php';
         ";
     }
 
 }
-
-
-
 
 ?>
 
@@ -67,7 +65,6 @@ if(isset($_POST['submit'])){
                 <td>
                     <label for="no_tlp">Phone Number :</label>
                     <br>
-                    <label>+62</label>
                     <input type="text" id="no_tlp" name="no_tlp" required maxlength="12" >
                 </td>
             </tr>

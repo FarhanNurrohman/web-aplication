@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
 
-$data = query("SELECT * FROM data_siswa ORDER BY nis ASC");
+$data = query("SELECT * FROM siswa ORDER BY nis ASC");
 
 
 ?>
@@ -19,7 +19,7 @@ $data = query("SELECT * FROM data_siswa ORDER BY nis ASC");
     <a href="">Add new user</a>
     <br>
     <a href="tambah.php">Add new student</a>
-    
+
     <form action="" method="post">
         <table border="1" cellspacing="0">
             <tr>
@@ -42,7 +42,7 @@ $data = query("SELECT * FROM data_siswa ORDER BY nis ASC");
                 </td>
                 <td><?= $siswa['nama'] ?></td>
                 <td><?= $siswa['nis'] ?></td>
-                <td><?= $siswa['no_tlp'] ?></td>
+                <td><?= $siswa['tel'] ?></td>
                 <td><?= $siswa['email'] ?></td>
             </tr>
                 <?php endforeach; ?>

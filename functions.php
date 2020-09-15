@@ -1,5 +1,5 @@
 <?php
-$db = mysqli_connect("localhost", "root", "", "data_kelas");
+$db = mysqli_connect("localhost", "root", "", "data-sekolah");
 
 function query($query){
     global $db;
@@ -21,26 +21,19 @@ function tambah($data){
     $nama = htmlspecialchars($data['nama']);
     $nis = htmlspecialchars($data['nis']);
     $no_tlp = htmlspecialchars($data['no_tlp']);
+    $email = htmlspecialchars($data['email']);
+    // var_dump($data); die;
 
-    $email = cekEmail($data['email']);
-    if($email){
-        echo "<script>
-            alert('Email tidak vailid!!')
-        </script>";
-        return false;
-    }
-
+    $email = cekEmail($email);
     $gambar = upload();
-    // memberikan pesan jika gambar belum di inputkan
-    if($gambar){
+    if($email || $gambar){
         return false;
     }
 
     // membuat query input
-    $query = "INSERT INTO data_siswa(nis, gambar, nama, no_tlp, email) 
-    VALUES ($nis, '$gambar', '$nama', '$no_tlp', '$email')";
+    // $query1 = ;
 
-    mysqli_query($db,$query);
+    mysqli_query($db,"INSERT INTO siswa (gambar, nis, nama, tel, email) VALUES ('$gambar', '$nis','$nama', '$no_tlp', '$email')");
     
     return mysqli_affected_rows($db);
 }
@@ -64,7 +57,7 @@ function upload(){
     $ekstensiGambar = strtolower(end($ekstensiGambar));
 
     // mengecek apakah yang diinputkan adalah gambar
-    if(!in_array($ekstensiVaild, $ekstensiGambar)){
+    if(!in_array($ekstensiGambar, $ekstensiVaild)){
         echo "<script>
             alert('yang anda masukkan bukan gambar');
         </script>";
@@ -93,6 +86,14 @@ function upload(){
 }
 
 function cekEmail($email){
-    return (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $email)) ? true : false;
+    // cek apakah email sudah sesuai
+    if(preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $email)){
+        return $email;
+    }else{
+        echo "<script>
+            alert('Email tidak vailid!!')
+        </script>";
+        return true;
+    }
 }
 ?>
