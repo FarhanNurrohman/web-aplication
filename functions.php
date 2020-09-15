@@ -23,16 +23,17 @@ function tambah($data){
     $jurusan = htmlspecialchars($data['jurusan']);
     $email = htmlspecialchars($data['email']);
 
+    $nis = cekAngka($nis);
     $email = cekEmail($email);
     $gambar = upload();
-    if($email === true || $gambar === true){
+    if($email === true || $gambar === true || $nis === true){
         return false;
     }
 
     // membuat query input
     // $query1 = ;
 
-    mysqli_query($db,"INSERT INTO siswa (gambar, nis, nama, jurusan, email) VALUES ('$gambar', '$nis','$nama', '$jurusan', '$email')");
+    mysqli_query($db,"INSERT INTO siswa (gambar, nis, nama, jurusan, email) VALUES ('$gambar', $nis,'$nama', '$jurusan', '$email')");
     
     return mysqli_affected_rows($db);
 }
@@ -100,6 +101,9 @@ function cekAngka($angka){
     if(is_numeric($angka)){
         return $angka;
     }else{
+        "<script>
+            alert('NIS haruslah angka')
+        </script>";
         return true;
     }
 }
