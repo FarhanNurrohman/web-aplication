@@ -15,11 +15,10 @@ $data = query("SELECT * FROM siswa ORDER BY nis ASC");
 <body>
     <a href="">logout</a>
 
-    <h1>Data kelas</h1>
-    <a href="">Add new user</a>
-    <br>
-    <a href="tambah.php">Add new student</a>
+    <h1>Welcome</h1>
+    <a href="">Add new user</a> | <a href="tambah.php">Add new student</a>
 
+    <h3>Daftar siswa</h3>
     <form action="" method="post">
         <table border="1" cellspacing="0">
             <tr>
@@ -28,8 +27,8 @@ $data = query("SELECT * FROM siswa ORDER BY nis ASC");
                 <th>Gambar</th>
                 <th>Nama</th>
                 <th>NIS</th>
-                <th>NoTlp</th>
-                <th>email</th>
+                <th>Jurusan</th>
+                <th>Email</th>
             </tr>
             <?php $i = 1; foreach($data as $siswa): ?>
             <tr>
@@ -42,7 +41,7 @@ $data = query("SELECT * FROM siswa ORDER BY nis ASC");
                 </td>
                 <td><?= $siswa['nama'] ?></td>
                 <td><?= $siswa['nis'] ?></td>
-                <td><?= $siswa['tel'] ?></td>
+                <td><?= $siswa['jurusan'] ?></td>
                 <td><?= $siswa['email'] ?></td>
             </tr>
                 <?php endforeach; ?>

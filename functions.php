@@ -20,20 +20,19 @@ function tambah($data){
 
     $nama = htmlspecialchars($data['nama']);
     $nis = htmlspecialchars($data['nis']);
-    $no_tlp = htmlspecialchars($data['no_tlp']);
+    $jurusan = htmlspecialchars($data['jurusan']);
     $email = htmlspecialchars($data['email']);
-    // var_dump($data); die;
 
     $email = cekEmail($email);
     $gambar = upload();
-    if($email || $gambar){
+    if($email === true || $gambar === true){
         return false;
     }
 
     // membuat query input
     // $query1 = ;
 
-    mysqli_query($db,"INSERT INTO siswa (gambar, nis, nama, tel, email) VALUES ('$gambar', '$nis','$nama', '$no_tlp', '$email')");
+    mysqli_query($db,"INSERT INTO siswa (gambar, nis, nama, jurusan, email) VALUES ('$gambar', '$nis','$nama', '$jurusan', '$email')");
     
     return mysqli_affected_rows($db);
 }
@@ -52,6 +51,15 @@ function upload(){
         return true;
     }
 
+    // menegecek apakah ukuran gambar sesuai
+    if($ukuranGambar > 1000000){
+        echo "<script>
+        alert('ukuran gambar terlalu besar');
+    </script>";
+
+    return true;
+    }
+
     $ekstensiVaild = ['jpg','jpeg','png'];
     $ekstensiGambar = explode('.',$namaGambar);
     $ekstensiGambar = strtolower(end($ekstensiGambar));
@@ -63,15 +71,6 @@ function upload(){
         </script>";
 
         return true;
-    }
-
-    // menegecek apakah ukuran gambar sesuai
-    if($ukuranGambar === 1000000){
-        echo "<script>
-        alert('ukuran gambar terlalu besar');
-    </script>";
-
-    return true;
     }
 
     $namaGambarBaru = uniqid();
@@ -93,6 +92,14 @@ function cekEmail($email){
         echo "<script>
             alert('Email tidak vailid!!')
         </script>";
+        return true;
+    }
+}
+
+function cekAngka($angka){
+    if(is_numeric($angka)){
+        return $angka;
+    }else{
         return true;
     }
 }

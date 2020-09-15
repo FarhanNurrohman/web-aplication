@@ -6,8 +6,6 @@ require 'functions.php';
 if(isset($_POST['submit'])){
 
     $respon = tambah($_POST);
-    echo mysqli_affected_rows($db);
-
     // cek apakah data berhasil diinputkan
     if($respon < 1){
         echo "<script>
@@ -42,30 +40,30 @@ if(isset($_POST['submit'])){
             </tr>
             <tr>
                 <td>
-                    <label for="gambar">Picture :</label>
+                    <label for="gambar">gambar :</label>
                     <br>
                     <input type="file" id="gambar" name="gambar">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="nis">Stuednt ID :</label>
+                    <label for="nis">NIS :</label>
                     <br>
                     <input type="text" id="nis" name="nis" required maxlength="6">
                 </td>
             </tr>
             <tr>    
                 <td>
-                    <label for="nama">Name :</label>
+                    <label for="nama">Nama :</label>
                     <br>
                     <input type="text" id="nama" name="nama" required>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="no_tlp">Phone Number :</label>
+                    <label for="jurusan">jurusan :</label>
                     <br>
-                    <input type="text" id="no_tlp" name="no_tlp" required maxlength="12" >
+                    <input type="text" id="jurusan" name="jurusan" required>
                 </td>
             </tr>
             <tr>
