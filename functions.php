@@ -117,4 +117,35 @@ function hapus($id){
 
     return mysqli_affected_rows($db);
 }
+
+function update($data){
+    global $db;
+
+    $id = $data['id'];
+    $nama = htmlspecialchars($data['nama']);
+    $nis = htmlspecialchars($data['nis']);
+    $jurusan = htmlspecialchars($data['jurusan']);
+    $email= htmlspecialchars($data['email']);
+
+    if($_FILES['gambar']['error'] === 4){
+        $gambar = $data['gambarLama'];
+    }else{
+        $gambar = upload();
+    }
+
+    // cek apakah email sudah benar dan nis adalah angka
+    $email = cekEmail($email);
+    $nis = cekAngka($nis);
+
+    if($nis === true || $email === true || $gambar === true){
+        return false;
+    }
+
+    // update data siswa
+    $query = "UPDATE siswa set gambar = '$gambar', nis = '$nis', nama = '$nama', email = '$email', jurusan = '$jurusan' WHERE id = $id";
+    mysqli_query($db,$query);
+
+    return mysqli_affected_rows($db);
+}
+
 ?>
