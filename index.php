@@ -16,7 +16,7 @@ $data = query("SELECT * FROM siswa ORDER BY nis ASC");
     <a href="">logout</a>
 
     <h1>Welcome</h1>
-    <a href="">Add new user</a> | <a href="tambah.php">Add new student</a>
+    <a href="register.php">Add new user</a> | <a href="tambah.php">Add new student</a>
 
     <h3>Daftar siswa</h3>
     <form action="" method="post">

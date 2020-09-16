@@ -148,4 +148,32 @@ function update($data){
     return mysqli_affected_rows($db);
 }
 
+function regist($data){
+    global $db;
+    $username = $data['username'];
+    $password1 = mysqli_real_escape_string($data['password']);
+    $password2 =  mysqli_real_escape_string($data['password2']);
+
+    // cek apakah verifikasi password sesuai
+    if($password1 === $password2){
+        $password1 = password_hash($password1, PASSWORD_DEFAULT);
+        $query = "INSERT INTO users (username, password) VALUE ('$username', '$password1')";
+
+        mysqli_query($db, $query);
+    }else{
+        echo "<string>
+            alert('Password tidak sama');
+            document.location.href = 'index.php';
+        </string>";
+        return false;
+    }
+}
+
+function cekData($table, $colom, $data){
+    global $db;
+    $query = "SELECT * FROM $table WHERE $colom = $data";
+    $result = myqsli_query($db, $query);
+
+    return mysqli_fetch_assoc($result);
+}
 ?>
