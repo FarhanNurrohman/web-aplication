@@ -30,9 +30,16 @@ function tambah($data){
         return false;
     }
 
-    // membuat query input
-    // $query1 = ;
+    // cek apakah nis sudah ada
+    $result = mysqli_query($db, "SELECT nis FROM siswa WHERE nis = $nis");
+    if(mysqli_fetch_assoc($result)){
+        echo "<script>
+            alert('Data NIS sudah ada');
+        </script>";
+        return false;
+    }
 
+    // menginputkan data siswa
     mysqli_query($db,"INSERT INTO siswa (gambar, nis, nama, jurusan, email) VALUES ('$gambar', $nis,'$nama', '$jurusan', '$email')");
     
     return mysqli_affected_rows($db);
@@ -98,6 +105,7 @@ function cekEmail($email){
 }
 
 function cekAngka($angka){
+    // cek apakah data yang diinputkan adalah angak
     if(is_numeric($angka)){
         return $angka;
     }else{
@@ -141,6 +149,14 @@ function update($data){
         return false;
     }
 
+    $result = mysqli_query($db, "SELECT nis FROM siswa WHERE nis = $nis");
+    if(mysqli_fetch_assoc($result)){
+        echo "<script>
+            alert('Data NIS sudah ada');
+        </script>";
+        return false;
+    }
+
     // update data siswa
     $query = "UPDATE siswa set gambar = '$gambar', nis = '$nis', nama = '$nama', email = '$email', jurusan = '$jurusan' WHERE id = $id";
     mysqli_query($db,$query);
@@ -151,8 +167,19 @@ function update($data){
 function regist($data){
     global $db;
     $username = $data['username'];
-    $password1 = mysqli_real_escape_string($data['password']);
-    $password2 =  mysqli_real_escape_string($data['password2']);
+    $password1 = mysqli_real_escape_string($db, $data['password']);
+    $password2 =  mysqli_real_escape_string($db, $data['password2']);
+
+    $query = "SELECT username FROM users WHERE username = '$username'";
+    $result = mysqli_query($db, $query);
+
+    // cek apakah sudah username yang di inputkan sudah ada
+    if(mysqli_fetch_assoc($result)){
+        echo "<script>
+            alert('Data NIS sudah ada');
+        </script>";
+        return false;
+    }
 
     // cek apakah verifikasi password sesuai
     if($password1 === $password2){
@@ -163,17 +190,8 @@ function regist($data){
     }else{
         echo "<string>
             alert('Password tidak sama');
-            document.location.href = 'index.php';
         </string>";
         return false;
     }
-}
-
-function cekData($table, $colom, $data){
-    global $db;
-    $query = "SELECT * FROM $table WHERE $colom = $data";
-    $result = myqsli_query($db, $query);
-
-    return mysqli_fetch_assoc($result);
 }
 ?>

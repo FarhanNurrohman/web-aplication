@@ -1,7 +1,21 @@
 <?php
 require 'functions.php';
 
-$data = regist($_POST);
+if(isset($_POST['submit'])){
+    $respon = regist($_POST);
+
+    if($respon < 1){
+        echo "<script>
+            alert('User baru gagal ditambahkan');
+            document.location.href = 'index.php';
+        </script>";
+    }else{
+        echo "<script>
+            alert('User baru gagal ditambahkan');
+            document.location.href = 'index.php';
+        </script>";
+    }
+}
 
 
 
@@ -15,27 +29,27 @@ $data = regist($_POST);
 </head>
 <body>
     <h1>Tambah user</h1>
-    <form action="" method="post">
+    <form action="" method="post" autocomplete="off">
         <table>
             <tr>
                 <td>
                     <label for="username">Username :</label>
                     <br>
-                    <input type="text" name="username" id="username">
+                    <input type="text" name="username" id="username" required>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="password">Password :</label>
                     <br>
-                    <input type="text" name="password" id="password">
+                    <input type="password" name="password" id="password" required>
                 </td>
             </tr>
             <tr>
                 <td>
                     <label for="password2">verifikasi password :</label>
                     <br>
-                    <input type="text" name="password2" id="password2">
+                    <input type="password" name="password2" id="password2" required>
                 </td>
             </tr>
             <tr>
