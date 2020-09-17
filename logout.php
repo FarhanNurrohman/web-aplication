@@ -1,9 +1,11 @@
 <?php
 session_start();
-
+session_unset();
 session_destroy();
-session_abort();
 
-header("Location : login.php");
+setcookie('key','',time()-60*60*24);
+setcookie('value','',time()-60*60*24);
+
+header("Location: login.php");
 exit;
 ?>
