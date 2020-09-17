@@ -1,5 +1,11 @@
 <?php
+session_start();
 require 'functions.php';
+
+if(!isset($_SESSION['log'])){
+    header("Location: login.php");
+    exit;
+}
 
 $id= $_GET['id'];
 $respons= hapus($id);

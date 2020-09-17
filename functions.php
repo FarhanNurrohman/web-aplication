@@ -34,7 +34,7 @@ function tambah($data){
     $result = mysqli_query($db, "SELECT nis FROM siswa WHERE nis = $nis");
     if(mysqli_fetch_assoc($result)){
         echo "<script>
-            alert('Data NIS sudah ada');
+            alert('NIS yang anda masukkan sudah ada');
         </script>";
         return false;
     }
@@ -62,7 +62,7 @@ function upload(){
     // menegecek apakah ukuran gambar sesuai
     if($ukuranGambar > 1000000){
         echo "<script>
-        alert('ukuran gambar terlalu besar');
+        alert('Ukuran gambar terlalu besar');
     </script>";
 
     return true;
@@ -75,7 +75,7 @@ function upload(){
     // mengecek apakah yang diinputkan adalah gambar
     if(!in_array($ekstensiGambar, $ekstensiVaild)){
         echo "<script>
-            alert('yang anda masukkan bukan gambar');
+            alert('File yang anda masukkan bukan gambar');
         </script>";
 
         return true;
@@ -98,7 +98,7 @@ function cekEmail($email){
         return $email;
     }else{
         echo "<script>
-            alert('Email tidak vailid!!')
+            alert('Email yang anda masukkan tidak vailid!!')
         </script>";
         return true;
     }
@@ -110,7 +110,7 @@ function cekAngka($angka){
         return $angka;
     }else{
         "<script>
-            alert('NIS haruslah angka')
+            alert('NIS yang anda masukkan bukan angka')
         </script>";
         return true;
     }
@@ -152,7 +152,7 @@ function update($data){
     $result = mysqli_query($db, "SELECT nis FROM siswa WHERE nis = $nis");
     if(mysqli_fetch_assoc($result)){
         echo "<script>
-            alert('Data NIS sudah ada');
+            alert('NIS yang anda masukkan sudah ada');
         </script>";
         return false;
     }
@@ -176,7 +176,7 @@ function regist($data){
     // cek apakah sudah username yang di inputkan sudah ada
     if(mysqli_fetch_assoc($result)){
         echo "<script>
-            alert('Data NIS sudah ada');
+            alert('Username sudah ada');
         </script>";
         return false;
     }
@@ -187,6 +187,8 @@ function regist($data){
         $query = "INSERT INTO users (username, password) VALUE ('$username', '$password1')";
 
         mysqli_query($db, $query);
+
+        return mysqli_affected_rows($db);
     }else{
         echo "<string>
             alert('Password tidak sama');

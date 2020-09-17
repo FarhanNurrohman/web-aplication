@@ -1,5 +1,10 @@
 <?php
+session_start();
 require 'functions.php';
+if(!isset($_SESSION['log'])){
+    header("Location: login.php");
+    exit;
+}
 
 $data = query("SELECT * FROM siswa ORDER BY nis ASC");
 
@@ -13,7 +18,7 @@ $data = query("SELECT * FROM siswa ORDER BY nis ASC");
     <title>Document</title>
 </head>
 <body>
-    <a href="">logout</a>
+    <a href="logout.php" onclick="return confirm('Apakah anda yakin ingin keluar?')">logout</a>
 
     <h1>Welcome</h1>
     <a href="register.php">Add new user</a> | <a href="tambah.php">Add new student</a>

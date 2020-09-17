@@ -1,5 +1,11 @@
 <?php
+session_start();
 require 'functions.php';
+
+if(!isset($_SESSION['log'])){
+    header("Location: login.php");
+    exit;
+}
 
 if(isset($_POST['submit'])){
     $respon = regist($_POST);
@@ -11,7 +17,7 @@ if(isset($_POST['submit'])){
         </script>";
     }else{
         echo "<script>
-            alert('User baru gagal ditambahkan');
+            alert('User baru berhasil ditambahkan');
             document.location.href = 'index.php';
         </script>";
     }

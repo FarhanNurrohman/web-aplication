@@ -1,6 +1,11 @@
 <?php
+session_start();
 require 'functions.php';
 
+if(!isset($_SESSION['log'])){
+    header("Location: login.php");
+    exit;
+}
 
 // mengecek apakah button sumbit telah di pencet
 if(isset($_POST['submit'])){
