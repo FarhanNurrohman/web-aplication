@@ -39,7 +39,7 @@ $data = query("SELECT * FROM siswa ORDER BY nis ASC");
             <tr>
                 <td><?= $i++; ?></td>
                 <td>
-                    <a href="update.php?id=<?=$siswa['id']?>">Update</a> | <a href="hapus.php?id=<?=$siswa['id']?>" onclick="return confirm('Apakah anda yakin?');">Delete</a>
+                    <a href="update.php?id=<?=$siswa['id']?>">Update</a> | <a href="hapus.php?id=<?=$siswa['id']?>" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?');">Delete</a>
                 </td>
                 <td>
                     <img src="img/<?= $siswa['gambar'] ?>" alt="" width="75">
