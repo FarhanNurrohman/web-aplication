@@ -6,7 +6,13 @@ if(!isset($_SESSION['log'])){
     exit;
 }
 
-$data = query("SELECT * FROM siswa ORDER BY nis ASC");
+if(isset($_POST['cari'])){
+    $keyword = $_POST['keyword'];
+
+    $data = cari($keyword);
+}else{
+    $data = query("SELECT * FROM siswa ORDER BY nis ASC");
+}
 
 
 ?>
@@ -24,7 +30,18 @@ $data = query("SELECT * FROM siswa ORDER BY nis ASC");
     <a href="register.php">Add new user</a> | <a href="tambah.php">Add new student</a>
 
     <h3>Daftar siswa</h3>
+
     <form action="" method="post">
+        <label for="key">Search : </label>
+        <input type="text" id="key" name="keyword">
+        <button name="cari">Cari</button>
+    </form>
+
+        <br>
+
+    <form action="" method="post" autocomplete="off">
+        
+
         <table border="1" cellspacing="0">
             <tr>
                 <th>No</th>
