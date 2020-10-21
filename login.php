@@ -85,7 +85,7 @@ if(isset($_POST["login"])){
             <tr>
                 <td>
                     <input type="checkbox" name="remamber" id="remamber">
-                    <label for="remamber me">Remamber me</label>
+                    <label for="remamber">Remamber me</label>
                 </td>
             </tr>
             <tr>

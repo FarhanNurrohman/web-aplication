@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'functions.php';
+require 'functions.php';    
 if(!isset($_SESSION['log'])){
     header("Location: login.php");
     exit;
@@ -40,9 +40,8 @@ if(isset($_POST['cari'])){
         <br>
 
     <form action="" method="post" autocomplete="off">
-        
-
-        <table border="1" cellspacing="0">
+        <div style="padding:5px;">
+        <table border="1" cellspacing="0" >
             <tr>
                 <th>No</th>
                 <th>Action</th>
@@ -68,6 +67,13 @@ if(isset($_POST['cari'])){
             </tr>
                 <?php endforeach; ?>
         </table>
+        </div>
     </form>
+
+    <style>
+        td , tr , th{
+            padding : 10px;
+        }
+    </style>
 </body>
 </html>
